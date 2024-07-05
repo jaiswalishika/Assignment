@@ -29,7 +29,6 @@ const departments: Department[] = [
     subdepartments: [
       { id: 21, name: 'graphic_design', departmentId: 2 },
       { id: 22, name: 'product_design', departmentId: 2 },
-      { id: 22, name: 'web-design', departmentId: 2 },
     ],
   },
 ];
