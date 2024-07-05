@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { List, ListItem, Checkbox, Typography, Collapse } from '@mui/material';
-import { ExpandMore } from '@mui/icons-material';
+import { List, ListItem, Checkbox, Typography, Collapse, IconButton } from '@mui/material';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 interface Department {
   id: number;
@@ -17,19 +17,19 @@ interface Subdepartment {
 const departments: Department[] = [
   {
     id: 1,
-    name: 'Department 1',
+    name: 'customer_service',
     subdepartments: [
-      { id: 11, name: 'Subdepartment 1.1', departmentId: 1 },
-      { id: 12, name: 'Subdepartment 1.2', departmentId: 1 },
-      { id: 13, name: 'Subdepartment 1.3', departmentId: 1 },
+      { id: 11, name: 'support', departmentId: 1 },
+      { id: 12, name: 'customer_success', departmentId: 2 }
     ],
   },
   {
     id: 2,
-    name: 'Department 2',
+    name: 'design',
     subdepartments: [
-      { id: 21, name: 'Subdepartment 2.1', departmentId: 2 },
-      { id: 22, name: 'Subdepartment 2.2', departmentId: 2 },
+      { id: 21, name: 'graphic_design', departmentId: 2 },
+      { id: 22, name: 'product_design', departmentId: 2 },
+      { id: 22, name: 'web-design', departmentId: 2 },
     ],
   },
 ];
@@ -116,8 +116,15 @@ const DepartmentTree: React.FC = () => {
           onChange={() => handleDepartmentChange(department.id)}
         />
         <Typography>{department.name}</Typography>
-        <ExpandMore onClick={() => handleExpandDepartment(department.id)} />
-
+        {expandedDepartments.includes(department.id) ? (
+          <IconButton onClick={() => handleExpandDepartment(department.id)}>
+            <ExpandLess />
+          </IconButton>
+        ) : (
+          <IconButton onClick={() => handleExpandDepartment(department.id)}>
+            <ExpandMore />
+          </IconButton>
+        )}
         {expandedDepartments.includes(department.id) && (
           <Collapse in={expandedDepartments.includes(department.id)}>
             <List>
