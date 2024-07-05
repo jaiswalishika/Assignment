@@ -1,17 +1,17 @@
-
 import Data from './components/Data'
-// import Form from './components/form'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Form from './components/form'
+
 
 function App() {
   return (
     <>
-    <div className='m-10 flex items-center justify-center'>
-    <h1>Hello</h1>
-      {/* <Form /> */}
-      <Data />
-    </div>
-      {/* <Form /> */}
-      <Data />
+    <BrowserRouter>
+      <Routes >
+        <Route path="/" element={<Form />} />
+        <Route path="/data" element={<Data />} />
+      </Routes >
+    </BrowserRouter>  
     </>
   )
 }

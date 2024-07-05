@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { IData } from '../models/IData'
 import { DataService } from '../service/DataService'
+import DepartmentTree from './Dropdown/DropdownMenu'
 
 //Data fetch--->possibility of delay
 interface IState {
@@ -40,6 +41,7 @@ const Data: React.FC = () => {
 
 
   return (
+    <>
     <div className='m-10 flex items-center justify-center'>
       <h1>Data from Api's</h1>
       {errorMsg && (<p>{errorMsg}</p>)}
@@ -65,6 +67,8 @@ const Data: React.FC = () => {
         </tbody>
       </table>
     </div>
+    <DepartmentTree />
+    </>
   )
 }
 
